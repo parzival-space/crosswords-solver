@@ -22,7 +22,7 @@ public class Test implements InitializingBean {
         log.info(cwdb.URL);
         List result = cwdb.getSoluation("gesetzlich", 5);
         for (Object object : result) {
-            System.out.println(object);
+            log.info("{}", object);
         }
     }
 
