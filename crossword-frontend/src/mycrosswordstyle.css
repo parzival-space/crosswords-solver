@@ -8,9 +8,7 @@
   height: 459px;
   padding-left: 45%;
 }
-.crossword__controls__clue {
-  display: none;
-}
+
 .crossword__controls__grid {
   display: none;
 }

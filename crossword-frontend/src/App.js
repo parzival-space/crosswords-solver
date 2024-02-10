@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./mycrosswordstyle.css";
 import Crossword from "react-crossword";
 
@@ -342,8 +342,54 @@ export default function App() {
     crosswordType: "quick",
   };
 
+  const [solution, setSolution] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  function generateRandomString(length) {
+    const charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      result += charset[randomIndex];
+    }
+    return result;
+  }
+
+  function handleGetSolution() {
+    const selected_data = window.location.hash.substring(1);
+    if (selected_data) {
+      const selected_word = data.entries.filter((d) => d.id === selected_data);
+      // console.log(selected_word[0].clue);
+      // console.log(selected_word[0].length);
+      const random_solution = generateRandomString(selected_word[0].length);
+      const random_solution1 = generateRandomString(selected_word[0].length);
+      setSolution([random_solution, random_solution1]);
+      console.log(solution);
+    }
+  }
+
+  function handleSetSolution() {
+    const selected_data = window.location.hash.substring(1);
+    if (selected_data) {
+      const selected_word = data.entries.filter((d) => d.id === selected_data);
+      selected_word[0].solution = selectedOption;
+    }
+  }
   return (
     <div className="App">
+      <div style={{ marginLeft: "10%" }}>
+        <button onClick={handleGetSolution}>get solution</button>
+        <br />
+        <label>Select an option:</label>
+        <select onChange={(e) => setSelectedOption(e.target.value)}>
+          {solution.map((v) => (
+            <option value={v}>{v}</option>
+          ))}
+        </select>
+        <br />
+        <button onClick={handleSetSolution}>set solution</button>
+      </div>
       <Crossword data={data} />
     </div>
   );
