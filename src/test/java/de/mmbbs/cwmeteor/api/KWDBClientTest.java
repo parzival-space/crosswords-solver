@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Slf4j
-@SpringBootTest
 public class KWDBClientTest {
 
     @SneakyThrows
