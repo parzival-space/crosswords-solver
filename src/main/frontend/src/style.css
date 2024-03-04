@@ -1,0 +1,24 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.crossword__container__game {
+    position: relative;
+    padding-top: 52px;
+    padding-bottom: 52px;
+    width: 100%;
+}
+
+.crossword__container__game {
+    position: relative;
+    padding-top: 52px;
+    padding-bottom: 52px;
+    padding-left: 50%;
+}
+
+.crossword__controls {
+    display: block;
+    margin-bottom: 6px;
+    padding-left: 50%;
+}
