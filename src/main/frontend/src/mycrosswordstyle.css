@@ -1,0 +1,17 @@
+.App {
+  padding-top: 48px;
+}
+.crossword__container__game {
+  position: relative;
+  padding-top: 52px;
+  padding-bottom: 52px;
+  height: 459px;
+  padding-left: 45%;
+}
+
+.crossword__controls__grid {
+  display: none;
+}
+.crossword__grid {
+  width: 100%;
+}
