@@ -356,15 +356,12 @@ export default function App() {
     return result;
   }
 
-  function handleGetSolution() {
+  async function handleGetSolution() {
     const selected_data = window.location.hash.substring(1);
     if (selected_data) {
       const selected_word = data.entries.filter((d) => d.id === selected_data);
-      // console.log(selected_word[0].clue);
-      // console.log(selected_word[0].length);
-      const random_solution = generateRandomString(selected_word[0].length);
-      const random_solution1 = generateRandomString(selected_word[0].length);
-      setSolution([random_solution, random_solution1]);
+      const solutionFromAPI = await (await fetch("/api/search?query=" + encodeURI(selected_word[0].clue) + "&characters=" + selected_word[0].length)).json()
+      setSolution(solutionFromAPI.map(x => x.answer));
       console.log(solution);
     }
   }
